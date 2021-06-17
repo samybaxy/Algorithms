@@ -1,7 +1,7 @@
 function merge(arr1, arr2) {
   let results = [];
-  let i,
-    j = 0;
+  let i = 0;
+  let j = 0;
 
   while (i < arr1.length && j < arr2.length) {
     if (arr1[i] < arr2[j]) {
@@ -19,7 +19,7 @@ function merge(arr1, arr2) {
   }
 
   while (j < arr2.length) {
-    results.push(arr2[j]);
+    results.push(arr1[j]);
     j++;
   }
 
@@ -30,8 +30,8 @@ function mergesort(dataset) {
   if (dataset.length <= 1) return dataset;
 
   let mid = Math.floor(dataset.length / 2);
-  let leftArr = mergesort(dataset.slice(0, mid));
-  let rightArr = mergesort(dataset.slice(mid));
+  let leftArray = dataset.slice(0, mid);
+  let rightArray = dataset.slice(mid);
 
-  return merge(leftArr, rightArr);
+  return merge(leftArray, rightArray);
 }

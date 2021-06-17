@@ -1,3 +1,4 @@
+// Greatest common denominator
 export default function (a, b) {
   let t = null;
 
