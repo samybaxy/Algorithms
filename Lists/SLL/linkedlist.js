@@ -95,4 +95,48 @@ class LinkedList {
     }
     return false;
   }
+
+  insert(index, value) {
+    if (index < 0 || index > this.length) return false;
+    if (index === 0) return this.unshift(value);
+    if (index === this.length) return this.push(value);
+
+    const newNode = new Node(value);
+    let pre = this.get(index - 1);
+    newNode.next = pre.next;
+    pre.next = newNode;
+
+    this.length++;
+    return true;
+  }
+
+  remove(index) {
+    if (index < 0 || index >= this.length) return undefined;
+    if (index === 0) return this.shift();
+    if (index === this.length - 1) return this.pop();
+
+    let pre = this.get(index - 1);
+    let temp = pre.next;
+    pre.next = temp.next;
+    temp.next = null;
+    this.length--;
+
+    return temp;
+  }
+
+  reverse() {
+    let temp = this.head;
+    this.head = this.tail;
+    this.tail = temp;
+    let next = null;
+    let prev = null;
+    for (let i = 0; i < this.length; i++) {
+      next = temp.next;
+      temp.next = prev;
+      prev = temp;
+      temp = next;
+    }
+
+    return this;
+  }
 }
